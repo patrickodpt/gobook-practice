@@ -3,13 +3,15 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
 )
 
 func main() {
-	s, sep := "", ""
-	for _, arg := range os.Args[1:] {
-		s += sep + arg
-		sep = " "
+	start := time.Now()
+	for ind, arg := range os.Args[1:] {
+		fmt.Println(arg)
+		fmt.Println(ind)
 	}
-	fmt.Println(s)
+	mSecs := time.Since(start).Seconds()
+	fmt.Printf("%g", mSecs)
 }
