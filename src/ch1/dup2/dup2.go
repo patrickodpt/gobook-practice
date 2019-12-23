@@ -14,6 +14,7 @@ func main() {
 		countLines(os.Stdin, counts)
 	} else {
 		for _, arg := range files {
+			counts[arg]++ // will add the file to map (Exercise 1.4)
 			f, err := os.Open(arg)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "dup2: %v\n", err)
@@ -24,7 +25,7 @@ func main() {
 		}
 	}
 	for line, n := range counts {
-		if n >= 1 {
+		if n >= 0 {
 			fmt.Printf("%d\t%s\n", n, line)
 		}
 	}
